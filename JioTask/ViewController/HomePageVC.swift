@@ -11,7 +11,7 @@ import UIKit
 class HomePageVC: UIViewController {
     
     
-    //    MARK:- ================================= VARIABLE
+    //    MARK:- ================================= VARIABLE  =============================
     
     let myLabel = UILabel()
     let searchButton = UIButton()
@@ -117,11 +117,13 @@ class HomePageVC: UIViewController {
     
     func go_search_view() {
         
+        self.view.endEditing(true)
+        
         if !appDelegate.isReachable()
         {
             let alert = UIAlertController(title: "Alert", message: "Internet Connection Lost! Go with last Search", preferredStyle: .alert)
             
-            let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let ok = UIAlertAction(title: "Yes", style: .default, handler: { action in
                 
                 let userVC = UserListVC()
                 userVC.search_user_name = self.searchTextField.text!.trimmingCharacters(in: .whitespaces)
@@ -129,7 +131,7 @@ class HomePageVC: UIViewController {
                 
             })
             alert.addAction(ok)
-            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+            let cancel = UIAlertAction(title: "No", style: .cancel, handler: { action in
                 
             })
             alert.addAction(cancel)
@@ -139,7 +141,7 @@ class HomePageVC: UIViewController {
         }
         else
         {
-            self.view.endEditing(true)
+            
             let userVC = UserListVC()
             userVC.search_user_name = searchTextField.text!.trimmingCharacters(in: .whitespaces)
             self.navigationController?.pushViewController(userVC, animated: true)
@@ -149,7 +151,7 @@ class HomePageVC: UIViewController {
 }
 
 
-//MARK:- ================================== DELEGATE METHOD
+//MARK:- ================================== DELEGATE METHOD  ===============================
 
 extension HomePageVC:UITextFieldDelegate
 {
@@ -159,11 +161,11 @@ extension HomePageVC:UITextFieldDelegate
         {
             return false
         }
-        self.view.endEditing(true)
         go_search_view()
         return true
     }
 }
+
 
 
 

@@ -94,7 +94,17 @@ class UserListVC: UIViewController {
             }
             
             print(userList.count)
-            tableView.reloadData()
+            if self.userList.count != 0
+            {
+                self.tableView.restore()
+                self.tableView.reloadData()
+            }
+            else
+            {
+                self.tableView.setEmptyMessage("Opps! No data found!")
+                self.tableView.reloadData()
+            }
+            
         }
     }
     
@@ -205,9 +215,6 @@ extension UserListVC
             }
         }
     }
-    
-    
-    
 }
 
 

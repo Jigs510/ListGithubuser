@@ -139,9 +139,7 @@ class UserDetailsVC: UIViewController
 extension UserDetailsVC
 {
      func userDetailsAPI() {
-            
-    //        let url:String = "https://api.github.com/search/users?q=\(search_user_name)&page=\(offset)"
-            
+
             let urlString = "https://api.github.com/users/\(user_name)"
             if let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),let url = URL(string: encoded)
              {
